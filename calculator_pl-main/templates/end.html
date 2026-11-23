@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="pl">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"><title>Wynik kalkulatora</title></head>
+<body>
+  <header class="header"><div class="header__text"><h1>Oblicz efektywność energetyczną swojego domu!</h1><p>Wykaż inicjatywę i rozwiąż problem nadmiernego zużycia energii!</p></div></header>
+  <main>
+    <h2 class="main__title main__title--margin">Efektywność energetyczna Twojego domu:</h2>
+    <div class="main__rez">
+      {% if result <= 150 %}
+      <img class="rez__img" src="{{ url_for('static', filename='img/planet_good.svg') }}" alt="Dobry wynik"><span>Twój wynik: {{ result }} kWh</span><span>Twój dom jest wyjątkowo wydajny, jeśli chodzi o zużycie energii!</span>
+      {% elif result < 300 %}
+      <img class="rez__img" src="{{ url_for('static', filename='img/planet_medium.svg') }}" alt="Średni wynik"><span>Twój wynik: {{ result }} kWh</span><span>Efektywność energetyczna Twojego domu jest średnia!</span>
+      {% else %}
+      <img class="rez__img" src="{{ url_for('static', filename='img/planet_bad.svg') }}" alt="Słaby wynik"><span>Twój wynik: {{ result }} kWh</span><span>Efektywność energetyczna Twojego domu jest poniżej średniej!</span>
+      {% endif %}
+    </div>
+  </main>
+</body>
+</html>
